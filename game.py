@@ -1,4 +1,5 @@
 import pygame
+from pantalla_inicio_final import mostrar_pantalla_de_inicio
 
 # Inicializar pygame
 pygame.init()
@@ -9,6 +10,7 @@ TAMANO_CELDA = 40
 pantalla = pygame.display.set_mode((ANCHO, ALTO))
 pygame.display.set_caption("Laberinto en Pygame")
 
+mostrar_pantalla_de_inicio(pantalla)
 # Colores
 NEGRO = (0, 0, 0)
 BLANCO = (255, 255, 255)
@@ -79,6 +81,6 @@ while jugando:
 
     # Actualizar pantalla
     pygame.display.flip()
-    reloj.tick(5)
+    reloj.tick(20)
 
 pygame.quit()
