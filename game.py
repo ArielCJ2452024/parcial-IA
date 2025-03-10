@@ -5,6 +5,11 @@ from pantalla_inicio_final import mostrar_pantalla_de_inicio
 # Inicializar pygame
 pygame.init()
 
+#musica
+pygame.mixer.init()
+pygame.mixer.music.load(r"C:\Users\User\Desktop\wow\sonidos\musica.ogg")
+pygame.mixer.music.play(10)
+
 # Configuración de pantalla
 ANCHO, ALTO = 600, 400
 TAMANO_CELDA = 40
