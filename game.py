@@ -1,4 +1,5 @@
 import pygame
+from npc import NPC
 from pantalla_inicio_final import mostrar_pantalla_de_inicio
 
 # Inicializar pygame
@@ -15,7 +16,7 @@ mostrar_pantalla_de_inicio(pantalla)
 NEGRO = (0, 0, 0)
 BLANCO = (255, 255, 255)
 AZUL = (0, 0, 255)
-
+ROJO = (255, 0, 0)
 # Mapa del laberinto (1 = pared, 0 = camino)
 laberinto = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -33,6 +34,8 @@ laberinto = [
 
 # Posición inicial del jugador
 jugador_x, jugador_y = 1, 1
+
+npc = NPC(7, 1, ROJO, TAMANO_CELDA, laberinto)
 
 # Bucle del juego
 reloj = pygame.time.Clock()
@@ -64,6 +67,9 @@ while jugando:
     if laberinto[nueva_y][nueva_x] == 0:
         jugador_x, jugador_y = nueva_x, nueva_y
 
+    npc.mover()
+
+
     # Dibujar el laberinto
     for fila in range(len(laberinto)):
         for columna in range(len(laberinto[fila])):
@@ -78,6 +84,8 @@ while jugando:
         pantalla, AZUL, 
         (jugador_x * TAMANO_CELDA, jugador_y * TAMANO_CELDA, TAMANO_CELDA, TAMANO_CELDA)
     )
+
+    npc.dibujar(pantalla)
 
     # Actualizar pantalla
     pygame.display.flip()
